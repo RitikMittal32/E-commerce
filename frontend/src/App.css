@@ -1,0 +1,104 @@
+.nav-ul li{
+          display: inline-block;
+          padding:  10px;
+          
+}
+
+.nav-ul{
+          padding: 5px;
+          margin: 0;
+          background-color: skyblue
+}
+
+
+.nav-ul li a{
+          color: #fff;
+          padding: 5px;
+          text-decoration: none;
+
+}
+
+body{
+         min-height: 100vh; 
+         display: flex;
+         flex-direction: column;
+}
+
+.footer{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: skyblue;
+          width:100%;
+          position: absolute;
+          bottom: 0;
+}
+
+.login{
+        margin-left:  30%;
+        margin-top: 100px;
+
+}
+
+.nav-right{
+        text-align:right;
+}
+
+.inputBox{
+          display: block;
+          margin: 25px;
+          padding: 7px;
+          width:300px;
+          border:1px solid skyblue;
+}
+
+.signup, .product{
+          margin-left: 30%;
+}
+
+.registerButton{
+        margin: 25px;
+        padding: 10px;
+        width:150px;
+        background-color: skyblue;
+        border: 1px solid;
+        cursor: pointer;
+          
+}
+
+.invalid-input{
+        color: red;
+        margin-top: -20px;
+        display:flex;
+        margin-left: 20px;
+
+
+}
+
+.product-list{
+        text-align: center;
+        margin-top: 50px;
+
+}
+
+.product-list ul li{
+        display: inline-block;
+        border: 1px solid skyblue;
+        padding: 5px;
+        width:150px;
+
+}
+
+.product-list ul{
+        margin: 0px;
+        
+}
+
+.search-product-box{
+
+        width: 400px;
+        margin: 20px;
+        height: 40px;
+        border: 1px solid skyblue;
+        padding-left: 20px;
+}
