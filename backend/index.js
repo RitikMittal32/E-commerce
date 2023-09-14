@@ -6,8 +6,6 @@ const app = express();
 const Product = require('./db/Product')
 
 
-const Jwt = require('jsonwebtoken');
-const jwtKey = 'e-comm';
 
 
 app.use(express.json())
@@ -19,12 +17,7 @@ app.post("/register", async (req,resp)=>{
        let result = await user.save();
        result = result.toObject();
        delete result.password;
-       Jwt.sign({result},jwtKey,{expiresIn:"2h"},(err,token)=>{
-              if(err){
-                     resp.send({result : "something went wrong,Please try after some time"})
-              }
-              resp.send({result,auth : token})
-       })
+       resp.send(result);
 })
 
 app.post('/login', async (req,resp)=>{
@@ -33,12 +26,9 @@ app.post('/login', async (req,resp)=>{
        if(req.body.password && req.body.email){
               let user = await User.findOne(req.body).select("-password");
               if(user){
-                     Jwt.sign({user},jwtKey,{expiresIn:"2h"},(err,token)=>{
-                            if(err){
-                                   resp.send({result : "something went wrong,Please try after some time"})
-                            }
-                            resp.send({user,auth : token})
-                     })
+                    
+                      resp.send(user)
+              
               }else{
                      resp.send({result:"No user find"})
               }

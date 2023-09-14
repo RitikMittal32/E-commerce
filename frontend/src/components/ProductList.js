@@ -10,11 +10,7 @@ const ProductList = () => {
           },[])
 
           const getProduct= async ()=>{
-                let result = await fetch('http://localhost:5000/products',{
-                  headers : {
-                    authorization: JSON.parse(localStorage.getItem('token'))
-                  }
-                })
+                let result = await fetch('http://localhost:5000/products')
                 result = await result.json();
                 
                 if(result){
@@ -65,7 +61,7 @@ const ProductList = () => {
           <li>Category</li>
           <li>Operation</li>
       </ul>
-      {check ? (
+      {check && sites.length > 0 ? (
           products.map((item,index)=> 
                     <ul key={item._id}>
                     <li>{index+1}</li>
