@@ -10,7 +10,7 @@ const ProductList = () => {
           },[])
 
           const getProduct= async ()=>{
-                let result = await fetch('http://localhost:5000/products')
+                let result = await fetch('http://localhost:8080/products')
                 result = await result.json();
                 
                 if(result){
@@ -20,10 +20,8 @@ const ProductList = () => {
                 }
           }
 
-          console.warn("products", products);
-
           const deleteProduct = async (id) => {
-            let result = await fetch(`http://localhost:5000/product/${id}`,{
+            let result = await fetch(`http://localhost:8080/product/${id}`,{
               method: 'Delete'
             });
             if(result){
@@ -36,12 +34,14 @@ const ProductList = () => {
           const searchHandle = async (event) => {
             let key = event.target.value;
             if(key){
-
-              let result = await fetch(`http://localhost:5000/search/${key}`);
-              result = await result.json();
-              if(result){
-                setProduct(result);
+              try{
+              let result = await fetch(`http://localhost:8080/search/${key}`);
+              setProduct(result);
+              // result = await result.json();
+              }catch(error){
+                console.warn("Error detect in search Handle");
               }
+              
             }else{
               getProduct();
 
@@ -61,7 +61,7 @@ const ProductList = () => {
           <li>Category</li>
           <li>Operation</li>
       </ul>
-      {check && sites.length > 0 ? (
+      {check && products.length > 0 ? (
           products.map((item,index)=> 
                     <ul key={item._id}>
                     <li>{index+1}</li>

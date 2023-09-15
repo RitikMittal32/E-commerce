@@ -15,16 +15,20 @@ const UpdateProduct = () => {
           },[])
 
           const getProductDetails = async () => {
-                  console.warn(params);
-                  let result = await fetch(`http://localhost:5000/product/${params.id}`);
-                  result = await result.json();
-                  setName(result.name);
-                  setPrice(result.price);
-                  setCategory(result.category);
-                  setCompany(result.company);
+                  try{
+                      let result = await fetch(`http://localhost:8080/product/${params.id}`)
+                    // result = await result.json();
+                    setName(result.name);
+                    setPrice(result.price);
+                    setCategory(result.category);
+                    setCompany(result.company);
+                  }catch(error){
+                    console.error("Error detected in get Product");
+                  }
+                  
           }
           const updateProduct = async () => {
-                    let result  = await fetch(`http://localhost:5000/product/${params.id}`, {
+                    let result  = await fetch(`http://localhost:8080/product/${params.id}`, {
                               method: 'Put',
                               body : JSON.stringify({name,price,category,company}),
                               headers: {
